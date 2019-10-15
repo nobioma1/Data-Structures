@@ -10,16 +10,18 @@ class Stack:
         self.storage = DoublyLinkedList(node=None)
 
     def push(self, value):
-        self.size = self.storage.__len__()
         value = self.storage.add_to_tail(value)
+        self.size += 1
+
         return value
 
     def pop(self):
         if self.storage.tail == None:
             return None
-        self.size = self.storage.__len__()
         value = self.storage.remove_from_tail()
+        self.size -= 1
+
         return value
 
     def len(self):
-        return self.storage.__len__()
+        return self.size
