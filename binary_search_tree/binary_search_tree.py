@@ -1,5 +1,3 @@
-import sys
-sys.path.append('../queue_and_stack')
 from dll_queue import Queue
 from dll_stack import Stack
 
@@ -29,7 +27,7 @@ class BinarySearchTree:
 
         # RIGHT CASE
         # check if the new nodes value is greater than or equal to the current parent value
-        if value > current_node:
+        if value >= current_node:
             # if there is no right child here
             if self.right is None:
                 # place a new one
@@ -63,7 +61,7 @@ class BinarySearchTree:
                 return left_node.contains(target)
 
         # Check if target is greater than target
-        if target > current_node:
+        if target >= current_node:
             # return false if there's no other node to the right
             if self.right is None:
                 return False
@@ -108,7 +106,15 @@ class BinarySearchTree:
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node):
-        pass
+        # Check if node is not == None
+        if node:
+            # if node, print recurse on the left of node
+            self.in_order_print(node.left)
+            # print current node value
+            print(node.value)
+            # if node, print recurse on the right of node
+            self.in_order_print(node.right)
+
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
